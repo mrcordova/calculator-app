@@ -11,6 +11,7 @@
   );
   --toggle-background-keypad-background: hsl(223, 31%, 20%);
   --Very-dark-desaturated-blue-screen-background: hsl(224, 36%, 15%);
+  --screen-background: hsl(224, 36%, 15%);
 
   /* #### Keys */
 
@@ -39,6 +40,7 @@
   --Grayish-red-toggle-background-keypad-background: hsl(0, 5%, 81%);
   --toggle-background-keypad-background: hsl(0, 5%, 81%);
   --Very-light-gray-screen-background: hsl(0, 0%, 93%);
+  --screen-background: hsl(0, 0%, 93%);
 
   /* #### Keys */
 
@@ -70,7 +72,9 @@
     12%
   );
   --toggle-background-keypad-background-screen-background: hsl(268, 71%, 12%);
-
+  --screen-background: var(
+    --toggle-background-keypad-background-screen-background
+  );
   /* #### Keys */
 
   --Dark-violet-key-background: hsl(281, 89%, 26%);
@@ -113,6 +117,8 @@ main {
 
   padding-inline: 1.5rem;
   margin-block: 1.5rem;
+
+  gap: 1.65rem;
   /* grid-auto-rows: 3fr; */
 }
 input[type="range"] {
@@ -148,12 +154,21 @@ input[type="range"] {
   grid-column: 3 / span 2;
 }
 .number-display {
-  height: max-content;
+  /* height: max-content; */
+  width: 100%;
 
-  /* margin-block: auto; */
-  margin-inline-start: auto;
-  font-size: 3rem;
-  /* padding-inline: 2rem; */
+  font-size: 2.4rem;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+
+  background-color: var(--screen-background);
+  color: var(--calc-header-text);
+  border-radius: 0.7rem;
+
+  & p {
+    width: max-content;
+    margin-inline-start: auto;
+  }
 }
 
 .numberpad {
