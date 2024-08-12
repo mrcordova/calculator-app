@@ -106,6 +106,22 @@ main {
   justify-content: space-between;
 }
 
+.equal {
+  grid-column: 3 / span 2;
+}
+.number-display {
+  margin-block: auto;
+  margin-inline-start: auto;
+  font-size: 3rem;
+  /* padding-inline: 2rem; */
+}
+
+.numberpad {
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-template-rows: repeat(5, 1fr); */
+  place-items: center;
+}
 .theme-container {
   display: flex;
   gap: 1rem;
@@ -127,4 +143,8 @@ main {
   width: 3em;
   height: 2rem;
   background-color: rebeccapurple;
+}
+
+.reset {
+  grid-column: 1 / span 2;
 }
