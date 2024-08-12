@@ -97,20 +97,27 @@ body {
   min-height: 100svh;
 }
 main {
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  grid-template-rows: max-content;
+  /* grid-auto-rows: 3fr; */
 }
 
 .calc-header {
   display: flex;
   justify-content: space-between;
+  height: max-content;
 }
 
 .equal {
   grid-column: 3 / span 2;
 }
 .number-display {
-  margin-block: auto;
+  height: max-content;
+
+  /* margin-block: auto; */
   margin-inline-start: auto;
   font-size: 3rem;
   /* padding-inline: 2rem; */
