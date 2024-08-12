@@ -18,8 +18,14 @@
   --Desaturated-dark-blue-key-background: hsl(225, 21%, 49%);
   --Desaturated-dark-blue-key-shadow: hsl(224, 28%, 35%);
 
+  --reset-del-key-bg: var(--Desaturated-dark-blue-key-background);
+  --reset-del-key-shadow: var(--Desaturated-dark-blue-key-shadow);
+
   --key-background-toggle: hsl(6, 63%, 50%);
   --Dark-red-key-shadow: hsl(6, 70%, 34%);
+
+  --eq-key-bg: var(--key-background-toggle);
+  --eq-key-shadow: var(--Dark-red-key-shadow);
 
   --Light-grayish-orange-key-background: hsl(30, 25%, 89%);
   --keypad-background: var(--Light-grayish-orange-key-background);
@@ -32,6 +38,7 @@
   --keypad-text: var(--Very-dark-grayish-blue);
   --White-text: hsl(0, 0%, 100%);
   --calc-header-text: hsl(0, 0%, 100%);
+  --eq-text: var(--White-text);
 }
 
 :root.light-theme {
@@ -50,8 +57,14 @@
   --Dark-moderate-cyan-key-background: hsl(185, 42%, 37%);
   --Very-dark-cyan-key-shadow: hsl(185, 58%, 25%);
 
+  --reset-del-key-bg: var(--Dark-moderate-cyan-key-background);
+  --reset-del-key-shadow: var(--Very-dark-cyan-key-shadow);
+
   --key-background-toggle: hsl(25, 98%, 40%);
   --Dark-orange-key-shadow: hsl(25, 99%, 27%);
+
+  --eq-key-bg: var(--key-background-toggle);
+  --eq-key-shadow: var(--Dark-orange-key-shadow);
 
   --Light-grayish-yellow-key-background: hsl(45, 7%, 89%);
   --keypad-background: var(--Light-grayish-yellow-key-background);
@@ -64,6 +77,7 @@
   --keypad-text: var(--Very-dark-grayish-yellow);
   --calc-header-text: hsl(60, 10%, 19%);
   --White-text: hsl(0, 0%, 100%);
+  --eq-text: var(--White-text);
 }
 
 :root.purple-theme {
@@ -84,8 +98,14 @@
   --Dark-violet-key-background: hsl(281, 89%, 26%);
   --Vivid-magenta-key-shadow: hsl(285, 91%, 52%);
 
+  --reset-del-key-bg: var(--Dark-violet-key-background);
+  --reset-del-key-shadow: var(--Vivid-magenta-key-shadow);
+
   --key-background-toggle: hsl(176, 100%, 44%);
   --Soft-cyan-key-shadow: hsl(177, 92%, 70%);
+
+  --eq-key-bg: var(--key-background-toggle);
+  --eq-key-shadow: var(--Soft-cyan-key-shadow);
 
   --Very-dark-violet-key-background: hsl(268, 47%, 21%);
   --keypad-background: var(--Very-dark-violet-key-background);
@@ -98,6 +118,7 @@
   --keypad-text: var(--Light-yellow);
   --calc-header-text: hsl(52, 100%, 62%);
   --Very-dark-blue: hsl(198, 20%, 13%);
+  --eq-text: var(--Very-dark-blue);
   --White-text: hsl(0, 0%, 100%);
 }
 
@@ -132,6 +153,7 @@ input[type="range"] {
   width: 100%;
 }
 #custom-toggle {
+  transition: 1s ease;
   -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
@@ -200,12 +222,26 @@ input[type="range"] {
     justify-content: center;
     border-radius: 0.5rem;
     box-shadow: inset 0px -4px 0px var(--key-shadow);
+    cursor: pointer;
   }
 
   & .del,
   .reset,
   .equal {
     font-size: 1.3rem;
+  }
+
+  & .reset,
+  .del {
+    color: var(--White-text);
+    background-color: var(--reset-del-key-bg);
+    box-shadow: inset 0px -4px 0px var(--reset-del-key-shadow);
+  }
+
+  & .equal {
+    color: var(--eq-text);
+    background-color: var(--eq-key-bg);
+    box-shadow: inset 0px -4px 0px var(--eq-key-shadow);
   }
 }
 .theme-container {
