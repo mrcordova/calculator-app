@@ -17,7 +17,7 @@
   --Desaturated-dark-blue-key-background: hsl(225, 21%, 49%);
   --Desaturated-dark-blue-key-shadow: hsl(224, 28%, 35%);
 
-  --Red-key-background-toggle: hsl(6, 63%, 50%);
+  --key-background-toggle: hsl(6, 63%, 50%);
   --Dark-red-key-shadow: hsl(6, 70%, 34%);
 
   --Light-grayish-orange-key-background: hsl(30, 25%, 89%);
@@ -45,7 +45,7 @@
   --Dark-moderate-cyan-key-background: hsl(185, 42%, 37%);
   --Very-dark-cyan-key-shadow: hsl(185, 58%, 25%);
 
-  --Orange-key-background-toggle: hsl(25, 98%, 40%);
+  --key-background-toggle: hsl(25, 98%, 40%);
   --Dark-orange-key-shadow: hsl(25, 99%, 27%);
 
   --Light-grayish-yellow-key-background: hsl(45, 7%, 89%);
@@ -76,7 +76,7 @@
   --Dark-violet-key-background: hsl(281, 89%, 26%);
   --Vivid-magenta-key-shadow: hsl(285, 91%, 52%);
 
-  --Pure-cyan-key-background-toggle: hsl(176, 100%, 44%);
+  --key-background-toggle: hsl(176, 100%, 44%);
   --Soft-cyan-key-shadow: hsl(177, 92%, 70%);
 
   --Very-dark-violet-key-background: hsl(268, 47%, 21%);
@@ -115,7 +115,24 @@ main {
   margin-block: 1.5rem;
   /* grid-auto-rows: 3fr; */
 }
+input[type="range"] {
+  width: 100%;
+}
+#custom-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
 
+  &.themes::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: var(--key-background-toggle);
+  }
+}
 .calc-header {
   display: flex;
   justify-content: space-between;
@@ -168,9 +185,12 @@ main {
   gap: 1rem;
 }
 .toggle {
+  display: flex;
   width: 4.5em;
-  height: 1.5rem;
+  height: 1.6rem;
+  padding-inline: 0.3rem;
   background-color: var(--toggle-background-keypad-background);
+  border-radius: 1rem;
 }
 
 .reset {
