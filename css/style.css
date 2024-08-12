@@ -17,11 +17,13 @@
 
   --Desaturated-dark-blue-key-background: hsl(225, 21%, 49%);
   --Desaturated-dark-blue-key-shadow: hsl(224, 28%, 35%);
+  --keypad-text: var(--Desaturated-dark-blue-key-background);
 
   --key-background-toggle: hsl(6, 63%, 50%);
   --Dark-red-key-shadow: hsl(6, 70%, 34%);
 
   --Light-grayish-orange-key-background: hsl(30, 25%, 89%);
+  --keypad-background: var(--Light-grayish-orange-key-background);
   --Grayish-orange-key-shadow: hsl(28, 16%, 65%);
 
   /* #### Text */
@@ -51,11 +53,13 @@
   --Dark-orange-key-shadow: hsl(25, 99%, 27%);
 
   --Light-grayish-yellow-key-background: hsl(45, 7%, 89%);
+  --keypad-background: var(--Light-grayish-yellow-key-background);
   --Dark-grayish-orange-key-shadow: hsl(35, 11%, 61%);
 
   /* #### Text */
 
   --Very-dark-grayish-yellow: hsl(60, 10%, 19%);
+  --keypad-text: var(--Very-dark-grayish-yellow);
   --calc-header-text: hsl(60, 10%, 19%);
   --White-text: hsl(0, 0%, 100%);
 }
@@ -71,10 +75,8 @@
     71%,
     12%
   );
-  --toggle-background-keypad-background-screen-background: hsl(268, 71%, 12%);
-  --screen-background: var(
-    --toggle-background-keypad-background-screen-background
-  );
+  --toggle-background-keypad-background: hsl(268, 71%, 12%);
+  --screen-background: var(--toggle-background-keypad-background);
   /* #### Keys */
 
   --Dark-violet-key-background: hsl(281, 89%, 26%);
@@ -84,11 +86,13 @@
   --Soft-cyan-key-shadow: hsl(177, 92%, 70%);
 
   --Very-dark-violet-key-background: hsl(268, 47%, 21%);
+  --keypad-background: var(--Very-dark-violet-key-background);
   --Dark-magenta-key-shadow: hsl(290, 70%, 36%);
 
   /* #### Text */
 
   --Light-yellow: hsl(52, 100%, 62%);
+  --keypad-text: var(--Light-yellow);
   --calc-header-text: hsl(52, 100%, 62%);
   --Very-dark-blue: hsl(198, 20%, 13%);
   --White-text: hsl(0, 0%, 100%);
@@ -173,9 +177,31 @@ input[type="range"] {
 
 .numberpad {
   display: grid;
-  /* grid-template-columns: repeat(4, 1fr); */
-  /* grid-template-rows: repeat(5, 1fr); */
-  place-items: center;
+  background-color: var(--toggle-background-keypad-background);
+  border-radius: 0.7rem;
+  padding: 1.4rem;
+  gap: 0.5rem;
+
+  font-size: 2rem;
+  color: var(--keypad-text);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  /* place-items: center; */
+
+  & div {
+    background-color: var(--keypad-background);
+    padding-block: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+  }
+
+  & .del,
+  .reset,
+  .equal {
+    font-size: 1.3rem;
+  }
 }
 .theme-container {
   display: flex;
