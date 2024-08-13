@@ -1,7 +1,9 @@
 const themeInput = document.querySelector("#custom-toggle");
-
-// - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and
-// have any additional changes saved in the browser
+const numbers = document.querySelectorAll(
+  ".numberpad>div:not(.del, .reset, .equal, .operators)"
+);
+const result = document.querySelector(".result");
+// - Perform mathematical operations like addition, subtraction, multiplication, and division
 function detectColorScheme() {
   let theme = "dark-theme";
 
@@ -57,5 +59,16 @@ function changeTheme(e) {
       break;
   }
 }
+function updateNumber(e) {
+  if (result.textContent == "0" && e.currentTarget.textContent == ".") {
+    result.textContent = "0";
+  } else if (result.textContent == "0") {
+    result.textContent = "";
+  }
+  result.textContent += e.currentTarget.textContent;
+}
 detectColorScheme();
 themeInput.addEventListener("click", changeTheme);
+for (const number of numbers) {
+  number.addEventListener("click", updateNumber);
+}
