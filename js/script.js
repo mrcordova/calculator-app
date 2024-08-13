@@ -2,7 +2,7 @@ const themeInput = document.querySelector("#custom-toggle");
 const numbers = document.querySelectorAll(
   ".numberpad>div:not(.del, .reset, .equal, .operators)"
 );
-
+const operators = document.querySelectorAll(".operators");
 const delBtn = document.querySelector(".del");
 const result = document.querySelector(".result");
 
@@ -71,15 +71,50 @@ function changeTheme(e) {
 function updateNumber(e) {
   result.textContent += e.currentTarget.textContent;
 
+  //   console.log(result.textContent);
   result.textContent = numberWithCommas(result.textContent);
+  //   console.log(result.textContent);
 }
+
+function chooseOperators(e) {
+  console.log(e.currentTarget.textContent);
+  switch (e.currentTarget.textContent) {
+    case ".":
+      dotOperator(e.currentTarget.textContent);
+      break;
+    case "+":
+      plusOperator(e.currentTarget.textContent);
+      break;
+    case "-":
+      minusOperator(e.currentTarget.textContent);
+      break;
+    case "x":
+      timesOperator(e.currentTarget.textContent);
+      break;
+    case "/":
+      divideOperator(e.currentTarget.textContent);
+      break;
+
+    default:
+      break;
+  }
+}
+
+function dotOperator(dot) {
+  result.textContent += dot;
+}
+function plusOperator(plus) {}
+function minusOperator(minus) {}
+function timesOperator(times) {}
+function divideOperator(divide) {}
 detectColorScheme();
 themeInput.addEventListener("click", changeTheme);
 for (const number of numbers) {
   number.addEventListener("click", updateNumber);
 }
-
+for (const operator of operators) {
+  operator.addEventListener("click", chooseOperators);
+}
 delBtn.addEventListener("click", () => {
-  console.log("click");
   result.textContent = "0";
 });
