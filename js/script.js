@@ -5,6 +5,7 @@ const numbers = document.querySelectorAll(
 const operators = document.querySelectorAll(".operators");
 const delBtn = document.querySelector(".del");
 const result = document.querySelector(".result");
+const operatorSigns = new Set(["+", "-", "x", "/"]);
 
 // console.log(delBtn);
 // - Perform mathematical operations like addition, subtraction, multiplication, and division
@@ -71,33 +72,38 @@ function changeTheme(e) {
 function updateNumber(e) {
   result.textContent += e.currentTarget.textContent;
 
+  var separators = ["\\+", "-", "\\x", "/"];
+
+  var numbers = result.textContent.split(new RegExp(separators.join("|"), "g"));
+  console.log(numbers);
+  //   let array =
   //   console.log(result.textContent);
   result.textContent = numberWithCommas(result.textContent);
   //   console.log(result.textContent);
 }
-
 function chooseOperators(e) {
   console.log(e.currentTarget.textContent);
-  switch (e.currentTarget.textContent) {
-    case ".":
-      dotOperator(e.currentTarget.textContent);
-      break;
-    case "+":
-      plusOperator(e.currentTarget.textContent);
-      break;
-    case "-":
-      minusOperator(e.currentTarget.textContent);
-      break;
-    case "x":
-      timesOperator(e.currentTarget.textContent);
-      break;
-    case "/":
-      divideOperator(e.currentTarget.textContent);
-      break;
+  result.textContent += e.currentTarget.textContent;
+  //   switch (e.currentTarget.textContent) {
+  //     case ".":
+  //       dotOperator(e.currentTarget.textContent);
+  //       break;
+  //     case "+":
+  //       plusOperator(e.currentTarget.textContent);
+  //       break;
+  //     case "-":
+  //       minusOperator(e.currentTarget.textContent);
+  //       break;
+  //     case "x":
+  //       timesOperator(e.currentTarget.textContent);
+  //       break;
+  //     case "/":
+  //       divideOperator(e.currentTarget.textContent);
+  //       break;
 
-    default:
-      break;
-  }
+  //     default:
+  //       break;
+  //   }
 }
 
 function dotOperator(dot) {
