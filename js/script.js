@@ -2,8 +2,17 @@ const themeInput = document.querySelector("#custom-toggle");
 const numbers = document.querySelectorAll(
   ".numberpad>div:not(.del, .reset, .equal, .operators)"
 );
+
+const delBtn = document.querySelector(".del");
 const result = document.querySelector(".result");
+
+// console.log(delBtn);
 // - Perform mathematical operations like addition, subtraction, multiplication, and division
+function numberWithCommas(x) {
+  x = x.replace(/,/g, "");
+  return parseFloat(x).toLocaleString();
+}
+
 function detectColorScheme() {
   let theme = "dark-theme";
 
@@ -60,15 +69,17 @@ function changeTheme(e) {
   }
 }
 function updateNumber(e) {
-  if (result.textContent == "0" && e.currentTarget.textContent == ".") {
-    result.textContent = "0";
-  } else if (result.textContent == "0") {
-    result.textContent = "";
-  }
   result.textContent += e.currentTarget.textContent;
+
+  result.textContent = numberWithCommas(result.textContent);
 }
 detectColorScheme();
 themeInput.addEventListener("click", changeTheme);
 for (const number of numbers) {
   number.addEventListener("click", updateNumber);
 }
+
+delBtn.addEventListener("click", () => {
+  console.log("click");
+  result.textContent = "0";
+});

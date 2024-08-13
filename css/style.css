@@ -140,6 +140,7 @@ main {
   /* display: grid; */
   display: flex;
   flex-direction: column;
+
   height: 100%;
   grid-template-rows: max-content;
 
@@ -184,7 +185,7 @@ input[type="range"] {
 }
 .number-display {
   /* height: max-content; */
-  width: 100%;
+  /* width: 100%; */
 
   font-size: 2.4rem;
   padding-inline: 1.5rem;
@@ -193,10 +194,10 @@ input[type="range"] {
   background-color: var(--screen-background);
   color: var(--calc-header-text);
   border-radius: 0.7rem;
+  display: flex;
+  justify-content: flex-end;
 
   & p {
-    width: max-content;
-    margin-inline-start: auto;
   }
 }
 
