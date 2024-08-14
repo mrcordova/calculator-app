@@ -137,18 +137,21 @@ body {
   background-color: var(--main-background);
 }
 main {
-  /* display: grid; */
   display: flex;
   flex-direction: column;
 
+  margin-inline: auto;
   height: 100%;
   grid-template-rows: max-content;
 
-  padding-inline: 1.5rem;
+  /* Mobile */
+  /* padding-inline: 1.5rem; */
+  /* margin-block: 1.5rem; */
+  /* gap: 1.65rem; */
+  /* Desktop */
+  padding-inline: 1.5em;
   margin-block: 1.5rem;
-
   gap: 1.65rem;
-  /* grid-auto-rows: 3fr; */
 }
 input[type="range"] {
   width: 100%;
@@ -184,40 +187,52 @@ input[type="range"] {
   grid-column: 3 / span 2;
 }
 .number-display {
-  /* height: max-content; */
-  /* width: 100%; */
+  font-size: clamp(2.4rem, 2.1887rem + 0.9014vw, 3rem);
+  padding-inline: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+  padding-block: clamp(1rem, 0.6479rem + 1.5023vw, 2rem);
+  /* MObile */
 
-  font-size: 2.4rem;
-  padding-inline: 1.5rem;
-  padding-block: 1rem;
+  /* font-size: 2.4rem; */
+  /* padding-inline: 1.5rem; */
+  /* padding-block: 1rem; */
+  /* Desktop */
+  /* font-size: 3rem; */
+  /* padding-inline: 2rem; */
+  /* padding-block: 2rem; */
 
   background-color: var(--screen-background);
   color: var(--calc-header-text);
   border-radius: 0.7rem;
   display: flex;
   justify-content: flex-end;
-
-  & p {
-  }
 }
 
 .numberpad {
   display: grid;
   background-color: var(--toggle-background-keypad-background);
   border-radius: 0.7rem;
-  padding: 1.4rem;
-  gap: 0.8rem;
 
-  font-size: 2rem;
+  padding: clamp(1.4rem, 1.1887rem + 0.9014vw, 2rem);
+  gap: clamp(0.8rem, 0.7296rem + 0.3005vw, 1rem);
+  font-size: clamp(2rem, 1.8944rem + 0.4507vw, 2.3rem);
+  /* Mobile */
+  /* padding: 1.4rem; */
+  /* gap: 0.8rem; */
+  /* font-size: 2rem; */
+  /* Desktop */
+  /* padding: 2rem; */
+  /* gap: 1rem; */
+
+  /* font-size: 2.3rem; */
   color: var(--keypad-text);
 
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  /* place-items: center; */
 
   & button {
     background-color: var(--keypad-background);
     padding-block: 0.5rem;
+    padding-inline: clamp(1rem, 0.6479rem + 1.5023vw, 2rem);
     display: flex;
     align-items: center;
     justify-content: center;
