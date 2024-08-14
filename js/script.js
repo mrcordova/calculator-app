@@ -4,7 +4,7 @@ const numbers = document.querySelectorAll(
 );
 const numberPad = document.querySelector(".numberpad");
 
-console.log(numberPad);
+// console.log(numberPad);
 // const operators = document.querySelectorAll(".operators");
 const delBtn = document.querySelector(".del");
 const display = document.querySelector(".result");
@@ -159,6 +159,14 @@ detectColorScheme();
 
 themeInput.addEventListener("click", changeTheme);
 
+const calculate = (n1, operator, n2) => {
+  const firstNum = parseFloat(n1);
+  const secondNum = parseFloat(n2);
+  if (operator === "add") return firstNum + secondNum;
+  if (operator === "subtract") return firstNum - secondNum;
+  if (operator === "multiply") return firstNum * secondNum;
+  if (operator === "divide") return firstNum / secondNum;
+};
 numberPad.addEventListener("click", (e) => {
   if (e.target.matches("button")) {
     const key = e.target;
@@ -168,12 +176,18 @@ numberPad.addEventListener("click", (e) => {
 
     const previousKeyType = numberPad.dataset.previousKeyType;
     if (!action) {
-      console.log("number-key");
-      if (displayedNum === "0" || previousKeyType === "operator") {
+      // console.log("number-key");
+      if (
+        displayedNum === "0" ||
+        previousKeyType === "operator" ||
+        previousKeyType === "calculate"
+      ) {
         display.textContent = keyContent;
       } else {
         display.textContent = displayedNum + keyContent;
       }
+
+      numberPad.dataset.previousKeyType = "number";
     }
     if (
       action === "add" ||
@@ -181,19 +195,50 @@ numberPad.addEventListener("click", (e) => {
       action === "multiply" ||
       action === "divide"
     ) {
-      console.log("operator key");
-      numberPad.dataset.previousKeyType = "operator";
+      const firstValue = numberPad.dataset.firstValue;
+      const operator = numberPad.dataset.operator;
+      const secondValue = displayedNum;
+      // console.log("operator key");
 
-      numberPad.dataset.firstValue = displayedNum;
+      if (
+        firstValue &&
+        operator &&
+        previousKeyType !== "operator" &&
+        previousKeyType !== "calculate"
+      ) {
+        // console.log(firstValue, operator, secondValue);
+        const calcValue = calculate(firstValue, operator, secondValue);
+        display.textContent = calcValue;
+        numberPad.dataset.firstValue = calcValue;
+      } else {
+        numberPad.dataset.firstValue = displayedNum;
+      }
+      // 8 - 1 = 7, 7 - 2 = 5, 5 - 3 = 2
+      numberPad.dataset.previousKeyType = "operator";
+      // numberPad.dataset.firstValue = display.textContent;
       numberPad.dataset.operator = action;
     }
 
     if (action === "decimal") {
       console.log("decimal key");
-      display.textContent = displayedNum + ".";
+      if (!displayedNum.includes(".")) {
+        display.textContent = displayedNum + ".";
+      } else if (
+        previousKeyType === "operator" ||
+        previousKeyType === "calculate"
+      ) {
+        display.textContent = "0.";
+      }
+      numberPad.dataset.previousKeyType = "decimal";
     }
     if (action === "clear") {
       console.log("clear key");
+      display.textContent = 0;
+      numberPad.dataset.firstValue = "";
+      numberPad.dataset.modValue = "";
+      numberPad.dataset.operator = "";
+      numberPad.dataset.previousKeyType = "";
+      numberPad.dataset.previousKeyType = "clear";
     }
     if (action === "calculate") {
       console.log("equal key");
@@ -201,12 +246,24 @@ numberPad.addEventListener("click", (e) => {
       const operator = numberPad.dataset.operator;
       const secondValue = displayedNum;
 
-      display.textContent = math.evaluate(
-        `${firstValue}${operators[operator]}${secondValue}`
-      );
+      if (firstValue) {
+        if (previousKeyType == "calculatte") {
+          firstValue = displayedNum;
+          secondValue = numberPad.dataset.modValue;
+        }
+        display.textContent = calculate(firstValue, operator, secondValue);
+      }
+
+      numberPad.dataset.modValue = secondValue;
+      numberPad.dataset.previousKeyType = "calculate";
     }
     if (action === "delete") {
       console.log("delete key");
+      display.textContent = display.textContent.slice(0, -1);
+      if (display.textContent == "") {
+        display.textContent = 0;
+      }
+      numberPad.dataset.previousKeyType = "delete";
     }
   }
 });
