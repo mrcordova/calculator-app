@@ -144,11 +144,6 @@ main {
   height: 100%;
   grid-template-rows: max-content;
 
-  /* Mobile */
-  /* padding-inline: 1.5rem; */
-  /* margin-block: 1.5rem; */
-  /* gap: 1.65rem; */
-  /* Desktop */
   padding-inline: 1.5em;
   margin-block: 1.5rem;
   gap: 1.65rem;
@@ -190,15 +185,6 @@ input[type="range"] {
   font-size: clamp(2.4rem, 2.1887rem + 0.9014vw, 3rem);
   padding-inline: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
   padding-block: clamp(1rem, 0.6479rem + 1.5023vw, 2rem);
-  /* MObile */
-
-  /* font-size: 2.4rem; */
-  /* padding-inline: 1.5rem; */
-  /* padding-block: 1rem; */
-  /* Desktop */
-  /* font-size: 3rem; */
-  /* padding-inline: 2rem; */
-  /* padding-block: 2rem; */
 
   background-color: var(--screen-background);
   color: var(--calc-header-text);
@@ -215,15 +201,7 @@ input[type="range"] {
   padding: clamp(1.4rem, 1.1887rem + 0.9014vw, 2rem);
   gap: clamp(0.8rem, 0.7296rem + 0.3005vw, 1rem);
   font-size: clamp(2rem, 1.8944rem + 0.4507vw, 2.3rem);
-  /* Mobile */
-  /* padding: 1.4rem; */
-  /* gap: 0.8rem; */
-  /* font-size: 2rem; */
-  /* Desktop */
-  /* padding: 2rem; */
-  /* gap: 1rem; */
 
-  /* font-size: 2.3rem; */
   color: var(--keypad-text);
 
   grid-template-columns: repeat(4, 1fr);
