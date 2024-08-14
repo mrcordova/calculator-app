@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/mathjs@13.0.3/lib/browser/math.js"></script>
+
     <script defer src="js/script.js"></script>
 
     <title>Frontend Mentor | Calculator app</title>
@@ -58,24 +60,24 @@
         <p class="result">0</p>
       </div>
       <div class="numberpad">
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div class="del">DEL</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div class="operators">+</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div class="operators">-</div>
-        <div class="operators">.</div>
-        <div>0</div>
-        <div class="operators">/</div>
-        <div class="operators">x</div>
-        <div class="reset">RESET</div>
-        <div class="equal">=</div>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="del" data-action="delete">DEL</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operators" data-action="add" value="+">+</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operators" data-action="subtract" value="-">-</button>
+        <button class="operators" data-action="decimal" value=".">.</button>
+        <button>0</button>
+        <button class="operators" data-action="divide" value="/">/</button>
+        <button class="operators" data-action="multiply" value="*">x</button>
+        <button class="reset" data-action="clear">RESET</button>
+        <button class="equal" data-action="calculate">=</button>
       </div>
     </main>
   </body>

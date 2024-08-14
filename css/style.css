@@ -215,7 +215,7 @@ input[type="range"] {
   grid-template-rows: repeat(5, 1fr);
   /* place-items: center; */
 
-  & div {
+  & button {
     background-color: var(--keypad-background);
     padding-block: 0.5rem;
     display: flex;
